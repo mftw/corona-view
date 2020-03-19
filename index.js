@@ -5,6 +5,9 @@ const app = express();
 const data = require("./data");
 const mapData = require("./mapdata");
 
+const debug = true;
+const log = (...args) => debug && console.log(...args);
+
 const countData = data.results.reduce((history, country) => {
   const countryInHistory =
     history[country.countryEnglishName || country.countryName];
@@ -33,13 +36,19 @@ const mergedMapData = (() => {
   const geometriesCopy = [
     ...mapDataCopy.objects.ne_110m_admin_0_countries.geometries
   ];
-  
+  const countryNames = Object.keys(countData);
   mapDataCopy.objects.ne_110m_admin_0_countries.geometries = geometriesCopy.map(
     geo => {
       const geoCopy = { ...geo };
+      const foundCountry = countryNames.find(name =>
+        name.toLowerCase().includes(geoCopy.properties.NAME.toLowerCase())
+      );
       geoCopy.properties = {
         ...geoCopy.properties,
-        ...countData[geoCopy.properties.NAME]
+        ...(foundCountry
+          ? countData[foundCountry]
+          : countData[geoCopy.properties.NAME])
+        // ...countData[geoCopy.properties.NAME]
       };
       return geoCopy;
     }
@@ -47,7 +56,10 @@ const mergedMapData = (() => {
   return mapDataCopy;
 })();
 
-app.use(logger("dev"));
+if (debug) {
+  app.use(logger("dev"));
+}
+
 app.use(cors());
 app.use(express.static("public"));
 
@@ -64,5 +76,5 @@ app.get("*", (req, res) => {
 });
 
 const listener = app.listen(4000, () => {
-  console.log("server @ http://localhost:" + listener.address().port);
+  log("server @ http://localhost:" + listener.address().port);
 });
