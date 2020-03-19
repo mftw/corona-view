@@ -1,0 +1,58 @@
+{
+  "name": "router-example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@juggle/resize-observer": "^3.1.2",
+    "@material-ui/core": "^4.9.5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "beautiful-react-hooks": "^0.22.9",
+    "d3-scale": "^3.2.1",
+    "moment": "^2.24.0",
+    "node-sass": "^4.13.1",
+    "react": "0.0.0-experimental-aae83a4b9",
+    "react-canvas-draw": "^1.1.0",
+    "react-color": "^2.18.0",
+    "react-dom": "0.0.0-experimental-aae83a4b9",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.3.1",
+    "react-simple-maps": "^1.0.0-beta.0",
+    "react-spinner-material": "^1.2.0",
+    "react-spring": "^8.0.27",
+    "react-tooltip": "^4.1.2",
+    "react-transition-group": "^4.3.0",
+    "react-use-gesture": "^7.0.5",
+    "recharts": "^2.0.0-beta.3",
+    "styled-components": "^5.0.1",
+    "styled-icons": "^10.2.1",
+    "use-http": "^0.3.9",
+    "use-resize-observer": "^6.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build-orig": "react-scripts build",
+    "clear-build": "rm -rf ./build/",
+    "clear-public": "rm -rf ../public/",
+    "copy-build": "cp -r build/ ../public/",
+    "build": "npm run clear-build && npm run build-orig && npm run clear-public && npm run copy-build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -67,6 +67,14 @@ app.get("/api", (req, res) => {
   return res.json(data);
 });
 
+app.get("/api/delayed", (req, res) => {
+  return new Promise(resovle => 
+    setTimeout(() => {
+      resovle(res.json(data));
+    }, 2000)
+  )
+});
+
 app.get("/mapdata", (req, res) => {
   return res.json(mergedMapData);
 });

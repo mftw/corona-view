@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start2": "nodemon --exec 'node index.js' --watch ./index.js --watch public/**/*.*",
     "start": "nodemon index.js"
   },
   "keywords": [],
@@ -17,5 +18,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
+  },
+  "nodemonConfig": {
+    "ignore": ["frontend/*"]  
   }
 }
