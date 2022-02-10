@@ -11,7 +11,7 @@
     "beautiful-react-hooks": "^0.22.9",
     "d3-scale": "^3.2.1",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "0.0.0-experimental-aae83a4b9",
     "react-canvas-draw": "^1.1.0",
     "react-color": "^2.18.0",
